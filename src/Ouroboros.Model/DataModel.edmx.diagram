@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7fd52b705199433cb4ec568b0502e586" Name="Diagram1" >
+        <EntityTypeShape EntityType="DataModel.SysUser" Width="1.5" PointX="2.5" PointY="1" />
+        <EntityTypeShape EntityType="DataModel.SysUserAction" Width="1.5" PointX="4.75" PointY="1" />
+        <EntityTypeShape EntityType="DataModel.SysAction" Width="1.5" PointX="7.125" PointY="1" />
+        <EntityTypeShape EntityType="DataModel.SysRole" Width="1.5" PointX="4.75" PointY="3.75" />
+        <AssociationConnector Association="DataModel.SysUserSysUserAction" />
+        <AssociationConnector Association="DataModel.SysActionSysUserAction" />
+        <AssociationConnector Association="DataModel.SysUserSysRole" />
+        <AssociationConnector Association="DataModel.SysRoleSysAction" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="DataModelTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SysUserSet" EntityType="DataModel.SysUser" />
+          <EntitySet Name="SysUserAction" EntityType="DataModel.SysUserAction" />
+          <EntitySet Name="SysAction" EntityType="DataModel.SysAction" />
+          <EntitySet Name="SysRole" EntityType="DataModel.SysRole" />
+          <AssociationSet Name="SysUserSysUserAction" Association="DataModel.SysUserSysUserAction">
+            <End Role="SysUser" EntitySet="SysUserSet" />
+            <End Role="SysUserAction" EntitySet="SysUserAction" />
+          </AssociationSet>
+          <AssociationSet Name="SysActionSysUserAction" Association="DataModel.SysActionSysUserAction">
+            <End Role="SysAction" EntitySet="SysAction" />
+            <End Role="SysUserAction" EntitySet="SysUserAction" />
+          </AssociationSet>
+          <AssociationSet Name="SysUserSysRole" Association="DataModel.SysUserSysRole">
+            <End Role="SysUser" EntitySet="SysUserSet" />
+            <End Role="SysRole" EntitySet="SysRole" />
+          </AssociationSet>
+          <AssociationSet Name="SysRoleSysAction" Association="DataModel.SysRoleSysAction">
+            <End Role="SysRole" EntitySet="SysRole" />
+            <End Role="SysAction" EntitySet="SysAction" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="SysUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="32" />
+          <Property Name="ShowName" Type="String" Nullable="false" MaxLength="32" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" DefaultValue="False" />
+          <NavigationProperty Name="SysUserAction" Relationship="DataModel.SysUserSysUserAction" FromRole="SysUser" ToRole="SysUserAction" />
+          <NavigationProperty Name="SysRole" Relationship="DataModel.SysUserSysRole" FromRole="SysUser" ToRole="SysRole" />
+        </EntityType>
+        <EntityType Name="SysUserAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SysUser" Relationship="DataModel.SysUserSysUserAction" FromRole="SysUserAction" ToRole="SysUser" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SysAction" Relationship="DataModel.SysActionSysUserAction" FromRole="SysUserAction" ToRole="SysAction" />
+          <Property Name="ActionId" Type="Int32" Nullable="false" />
+          <Property Name="HasPermission" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" DefaultValue="False" />
+        </EntityType>
+        <EntityType Name="SysAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActionName" Type="String" Nullable="false" MaxLength="32" />
+          <Property Name="ActionCode" Type="String" Nullable="true" MaxLength="32" />
+          <Property Name="ActionType" Type="DataModel.ActionType" Nullable="false" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="Url" Type="String" Nullable="false" />
+          <Property Name="Icon" Type="String" Nullable="false" MaxLength="32" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="Area" Type="String" Nullable="true" MaxLength="32" />
+          <Property Name="Controller" Type="String" Nullable="false" MaxLength="32" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="32" />
+          <Property Name="HttpMethd" Type="DataModel.HttpMethodType" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" DefaultValue="False" />
+          <NavigationProperty Name="SysUserAction" Relationship="DataModel.SysActionSysUserAction" FromRole="SysAction" ToRole="SysUserAction" />
+          <NavigationProperty Name="SysRole" Relationship="DataModel.SysRoleSysAction" FromRole="SysAction" ToRole="SysRole" />
+        </EntityType>
+        <EntityType Name="SysRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="32" />
+          <Property Name="IsActlve" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" DefaultValue="False" />
+          <NavigationProperty Name="SysUser" Relationship="DataModel.SysUserSysRole" FromRole="SysRole" ToRole="SysUser" />
+          <NavigationProperty Name="SysAction" Relationship="DataModel.SysRoleSysAction" FromRole="SysRole" ToRole="SysAction" />
+        </EntityType>
+        <Association Name="SysUserSysUserAction">
+          <End Type="DataModel.SysUser" Role="SysUser" Multiplicity="1" />
+          <End Type="DataModel.SysUserAction" Role="SysUserAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SysUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SysUserAction">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SysActionSysUserAction">
+          <End Type="DataModel.SysAction" Role="SysAction" Multiplicity="1" />
+          <End Type="DataModel.SysUserAction" Role="SysUserAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SysAction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SysUserAction">
+              <PropertyRef Name="ActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SysUserSysRole">
+          <End Type="DataModel.SysUser" Role="SysUser" Multiplicity="*" />
+          <End Type="DataModel.SysRole" Role="SysRole" Multiplicity="*" />
+        </Association>
+        <Association Name="SysRoleSysAction">
+          <End Type="DataModel.SysRole" Role="SysRole" Multiplicity="*" />
+          <End Type="DataModel.SysAction" Role="SysAction" Multiplicity="*" />
+        </Association>
+        <EnumType Name="ActionType" cg:ExternalTypeName="Ouroboros.Model.EnumList.ActionType" />
+        <EnumType Name="HttpMethodType" cg:ExternalTypeName="Ouroboros.Model.EnumList.HttpMethodType" />
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="DataModel" />
+        <Alias Key="Target" Value="DataModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="DataModelContainer" StorageEntityContainer="DataModelTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
