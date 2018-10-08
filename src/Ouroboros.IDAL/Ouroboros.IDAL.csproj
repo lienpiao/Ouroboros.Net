@@ -41,7 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBaseDao.cs" />
+    <Compile Include="ISysActionDao.cs" />
+    <Compile Include="ISysRoleDao.cs" />
+    <Compile Include="ISysUserActionDao.cs" />
+    <Compile Include="ISysUserDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ouroboros.Model\Ouroboros.Model.csproj">
+      <Project>{14DCE9AD-BEBC-4F23-A944-9658613420B3}</Project>
+      <Name>Ouroboros.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
