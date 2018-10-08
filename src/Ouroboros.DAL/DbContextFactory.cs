@@ -8,13 +8,13 @@ namespace Ouroboros.DAL
     /// <summary>
     /// 当前EF上下文的抽象工厂
     /// </summary>
-    public class DbContextFactory : IDbContextFactory
+    public class DbContextFactory
     {
         /// <summary>
         /// 获取当前EF上下文的唯一实例
         /// </summary>
         /// <returns></returns>
-        public DbContext GetCurrentThreadInstance()
+        public static DbContext GetCurrentThreadInstance()
         {
             DbContext obj = CallContext.GetData(typeof(DataModelContainer).FullName) as DbContext;
             if (obj == null)
