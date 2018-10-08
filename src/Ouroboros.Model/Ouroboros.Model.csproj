@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A4D227EC-2FBF-429A-9C4C-6B3B69CAB335}</ProjectGuid>
+    <ProjectGuid>{14DCE9AD-BEBC-4F23-A944-9658613420B3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Ouroboros.Model</RootNamespace>

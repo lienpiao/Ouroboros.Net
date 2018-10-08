@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Ouroboros.IBLL
+namespace Ouroboros.IDAL
 {
     /// <summary>
     /// 数据访问层接口基类
