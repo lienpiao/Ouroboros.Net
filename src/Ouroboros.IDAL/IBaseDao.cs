@@ -66,7 +66,7 @@ namespace Ouroboros.IDAL
         /// 获取行数
         /// </summary>
         /// <returns></returns>
-        long Count(Expression<Func<T, bool>> whereLambda = null);
+        long Count(Expression<Func<T, bool>> whereLambda);
         #endregion
 
         #region Delete
