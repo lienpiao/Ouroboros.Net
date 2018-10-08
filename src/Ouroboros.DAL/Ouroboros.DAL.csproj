@@ -49,6 +49,10 @@
     <Compile Include="BaseDao.cs" />
     <Compile Include="DbContextFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SysActionDao.cs" />
+    <Compile Include="SysRoleDao.cs" />
+    <Compile Include="SysUserActionDao.cs" />
+    <Compile Include="SysUserDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ouroboros.IDAL\Ouroboros.IDAL.csproj">
