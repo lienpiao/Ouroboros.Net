@@ -37,13 +37,13 @@ namespace Ouroboros.IDAL
         /// </summary>
         /// <param name="whereLambda">Lambda表达式</param>
         /// <returns></returns>
-        T Getentity(Expression<Func<T, bool>> whereLambda);
+        T GetModel(Expression<Func<T, bool>> whereLambda);
         /// <summary>
         /// 通过主键得到一个对象实体
         /// </summary>
         /// <param name="keyValue">主键</param>
         /// <returns></returns>
-        T Getentity(object keyValue);
+        T GetModel(object keyValue);
         /// <summary>
         /// 获得数据列表
         /// </summary>
