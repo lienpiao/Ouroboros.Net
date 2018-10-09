@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ouroboros.Mvc.Infrastucture;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,8 @@ namespace Ouroboros.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            //告诉MVC用新建的类(NinjectControllerFactory)来创建控制器对象。
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
         }
     }
 }
