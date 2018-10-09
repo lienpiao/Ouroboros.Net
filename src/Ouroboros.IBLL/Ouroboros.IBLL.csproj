@@ -40,7 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IBaseService.cs" />
+    <Compile Include="ISysActionService.cs" />
+    <Compile Include="ISysRoleService.cs" />
+    <Compile Include="ISysUserActionService.cs" />
+    <Compile Include="ISysUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ouroboros.IDAL\Ouroboros.IDAL.csproj">
+      <Project>{B5A27B19-902F-413E-847A-3E010AF1B10E}</Project>
+      <Name>Ouroboros.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ouroboros.Model\Ouroboros.Model.csproj">
+      <Project>{14DCE9AD-BEBC-4F23-A944-9658613420B3}</Project>
+      <Name>Ouroboros.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
