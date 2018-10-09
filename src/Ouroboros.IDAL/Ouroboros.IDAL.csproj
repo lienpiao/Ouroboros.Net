@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBaseDao.cs" />
+    <Compile Include="IDbSession.cs" />
+    <Compile Include="IDbSessionFactory.cs" />
     <Compile Include="ISysActionDao.cs" />
     <Compile Include="ISysRoleDao.cs" />
     <Compile Include="ISysUserActionDao.cs" />
