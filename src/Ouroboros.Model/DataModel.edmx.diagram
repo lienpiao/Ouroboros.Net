@@ -11,8 +11,8 @@
         <EntityTypeShape EntityType="DataModel.SysRole" Width="1.5" PointX="4.75" PointY="3.75" />
         <AssociationConnector Association="DataModel.SysUserSysUserAction" />
         <AssociationConnector Association="DataModel.SysActionSysUserAction" />
-        <AssociationConnector Association="DataModel.SysUserSysRole" />
-        <AssociationConnector Association="DataModel.SysRoleSysAction" />
+        <AssociationConnector Association="DataModel.SysUserRole" />
+        <AssociationConnector Association="DataModel.SysRoleAction" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

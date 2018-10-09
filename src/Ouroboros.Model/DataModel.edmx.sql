@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/09/2018 13:56:31
+-- Date Created: 10/09/2018 14:08:11
 -- Generated from EDMX file: D:\Users\Lilb\Documents\GitHub\Ouroboros.Net\src\Ouroboros.Model\DataModel.edmx
 -- --------------------------------------------------
 
@@ -17,18 +17,54 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_SysUserSysUserAction]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SysUserAction] DROP CONSTRAINT [FK_SysUserSysUserAction];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SysActionSysUserAction]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SysUserAction] DROP CONSTRAINT [FK_SysActionSysUserAction];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SysUserSysRole_SysUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SysUserSysRole] DROP CONSTRAINT [FK_SysUserSysRole_SysUser];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SysUserSysRole_SysRole]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SysUserSysRole] DROP CONSTRAINT [FK_SysUserSysRole_SysRole];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SysRoleSysAction_SysRole]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SysRoleSysAction] DROP CONSTRAINT [FK_SysRoleSysAction_SysRole];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SysRoleSysAction_SysAction]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SysRoleSysAction] DROP CONSTRAINT [FK_SysRoleSysAction_SysAction];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[SysUserSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SysUserSet];
+GO
+IF OBJECT_ID(N'[dbo].[SysUserAction]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SysUserAction];
+GO
+IF OBJECT_ID(N'[dbo].[SysAction]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SysAction];
+GO
+IF OBJECT_ID(N'[dbo].[SysRole]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SysRole];
+GO
+IF OBJECT_ID(N'[dbo].[SysUserSysRole]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SysUserSysRole];
+GO
+IF OBJECT_ID(N'[dbo].[SysRoleSysAction]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SysRoleSysAction];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
 -- --------------------------------------------------
 
--- Creating table 'SysUserSet'
-CREATE TABLE [dbo].[SysUserSet] (
+-- Creating table 'SysUser'
+CREATE TABLE [dbo].[SysUser] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [UserName] nvarchar(32)  NOT NULL,
     [ShowName] nvarchar(32)  NOT NULL,
@@ -74,15 +110,15 @@ CREATE TABLE [dbo].[SysRole] (
 );
 GO
 
--- Creating table 'SysUserSysRole'
-CREATE TABLE [dbo].[SysUserSysRole] (
+-- Creating table 'SysUserRole'
+CREATE TABLE [dbo].[SysUserRole] (
     [SysUser_Id] int  NOT NULL,
     [SysRole_Id] int  NOT NULL
 );
 GO
 
--- Creating table 'SysRoleSysAction'
-CREATE TABLE [dbo].[SysRoleSysAction] (
+-- Creating table 'SysRoleAction'
+CREATE TABLE [dbo].[SysRoleAction] (
     [SysRole_Id] int  NOT NULL,
     [SysAction_Id] int  NOT NULL
 );
@@ -92,9 +128,9 @@ GO
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
 
--- Creating primary key on [Id] in table 'SysUserSet'
-ALTER TABLE [dbo].[SysUserSet]
-ADD CONSTRAINT [PK_SysUserSet]
+-- Creating primary key on [Id] in table 'SysUser'
+ALTER TABLE [dbo].[SysUser]
+ADD CONSTRAINT [PK_SysUser]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -116,15 +152,15 @@ ADD CONSTRAINT [PK_SysRole]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [SysUser_Id], [SysRole_Id] in table 'SysUserSysRole'
-ALTER TABLE [dbo].[SysUserSysRole]
-ADD CONSTRAINT [PK_SysUserSysRole]
+-- Creating primary key on [SysUser_Id], [SysRole_Id] in table 'SysUserRole'
+ALTER TABLE [dbo].[SysUserRole]
+ADD CONSTRAINT [PK_SysUserRole]
     PRIMARY KEY CLUSTERED ([SysUser_Id], [SysRole_Id] ASC);
 GO
 
--- Creating primary key on [SysRole_Id], [SysAction_Id] in table 'SysRoleSysAction'
-ALTER TABLE [dbo].[SysRoleSysAction]
-ADD CONSTRAINT [PK_SysRoleSysAction]
+-- Creating primary key on [SysRole_Id], [SysAction_Id] in table 'SysRoleAction'
+ALTER TABLE [dbo].[SysRoleAction]
+ADD CONSTRAINT [PK_SysRoleAction]
     PRIMARY KEY CLUSTERED ([SysRole_Id], [SysAction_Id] ASC);
 GO
 
@@ -136,7 +172,7 @@ GO
 ALTER TABLE [dbo].[SysUserAction]
 ADD CONSTRAINT [FK_SysUserSysUserAction]
     FOREIGN KEY ([UserId])
-    REFERENCES [dbo].[SysUserSet]
+    REFERENCES [dbo].[SysUser]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
@@ -162,51 +198,51 @@ ON [dbo].[SysUserAction]
     ([ActionId]);
 GO
 
--- Creating foreign key on [SysUser_Id] in table 'SysUserSysRole'
-ALTER TABLE [dbo].[SysUserSysRole]
-ADD CONSTRAINT [FK_SysUserSysRole_SysUser]
+-- Creating foreign key on [SysUser_Id] in table 'SysUserRole'
+ALTER TABLE [dbo].[SysUserRole]
+ADD CONSTRAINT [FK_SysUserRole_SysUser]
     FOREIGN KEY ([SysUser_Id])
-    REFERENCES [dbo].[SysUserSet]
+    REFERENCES [dbo].[SysUser]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [SysRole_Id] in table 'SysUserSysRole'
-ALTER TABLE [dbo].[SysUserSysRole]
-ADD CONSTRAINT [FK_SysUserSysRole_SysRole]
+-- Creating foreign key on [SysRole_Id] in table 'SysUserRole'
+ALTER TABLE [dbo].[SysUserRole]
+ADD CONSTRAINT [FK_SysUserRole_SysRole]
     FOREIGN KEY ([SysRole_Id])
     REFERENCES [dbo].[SysRole]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_SysUserSysRole_SysRole'
-CREATE INDEX [IX_FK_SysUserSysRole_SysRole]
-ON [dbo].[SysUserSysRole]
+-- Creating non-clustered index for FOREIGN KEY 'FK_SysUserRole_SysRole'
+CREATE INDEX [IX_FK_SysUserRole_SysRole]
+ON [dbo].[SysUserRole]
     ([SysRole_Id]);
 GO
 
--- Creating foreign key on [SysRole_Id] in table 'SysRoleSysAction'
-ALTER TABLE [dbo].[SysRoleSysAction]
-ADD CONSTRAINT [FK_SysRoleSysAction_SysRole]
+-- Creating foreign key on [SysRole_Id] in table 'SysRoleAction'
+ALTER TABLE [dbo].[SysRoleAction]
+ADD CONSTRAINT [FK_SysRoleAction_SysRole]
     FOREIGN KEY ([SysRole_Id])
     REFERENCES [dbo].[SysRole]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [SysAction_Id] in table 'SysRoleSysAction'
-ALTER TABLE [dbo].[SysRoleSysAction]
-ADD CONSTRAINT [FK_SysRoleSysAction_SysAction]
+-- Creating foreign key on [SysAction_Id] in table 'SysRoleAction'
+ALTER TABLE [dbo].[SysRoleAction]
+ADD CONSTRAINT [FK_SysRoleAction_SysAction]
     FOREIGN KEY ([SysAction_Id])
     REFERENCES [dbo].[SysAction]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_SysRoleSysAction_SysAction'
-CREATE INDEX [IX_FK_SysRoleSysAction_SysAction]
-ON [dbo].[SysRoleSysAction]
+-- Creating non-clustered index for FOREIGN KEY 'FK_SysRoleAction_SysAction'
+CREATE INDEX [IX_FK_SysRoleAction_SysAction]
+ON [dbo].[SysRoleAction]
     ([SysAction_Id]);
 GO
 

@@ -25,7 +25,7 @@ namespace Ouroboros.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<SysUser> SysUserSet { get; set; }
+        public virtual DbSet<SysUser> SysUser { get; set; }
         public virtual DbSet<SysUserAction> SysUserAction { get; set; }
         public virtual DbSet<SysAction> SysAction { get; set; }
         public virtual DbSet<SysRole> SysRole { get; set; }
