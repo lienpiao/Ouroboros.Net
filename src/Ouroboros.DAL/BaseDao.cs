@@ -28,9 +28,10 @@ namespace Ouroboros.DAL
         /// 增加一条数据
         /// </summary>
         /// <param name="entity">实体对象</param>
-        public virtual void Insert(T entity)
+        public virtual T Insert(T entity)
         {
             Db.Set<T>().Add(entity);
+            return entity;
         }
 
         #endregion
@@ -41,13 +42,15 @@ namespace Ouroboros.DAL
         /// 更新一条数据
         /// </summary>
         /// <param name="entity">实体对象</param>
-        public virtual void Update(T entity)
+        public virtual T Update(T entity)
         {
             if (entity != null)
             {
                 Db.Set<T>().Attach(entity);
                 Db.Entry(entity).State = EntityState.Modified;
             }
+
+            return entity;
         }
 
         #endregion
@@ -121,38 +124,43 @@ namespace Ouroboros.DAL
         /// 通过实体对象删除一条数据
         /// </summary>
         /// <param name="entity">实体对象</param>
-        public virtual void Delete(T entity)
+        public virtual int Delete(T entity)
         {
             Db.Set<T>().Attach(entity);
             Db.Entry(entity).State = EntityState.Deleted;
+            return -1;
+
         }
         /// <summary>
         /// 通过主键删除一条数据
         /// </summary>
         /// <param name="id"></param>
-        public virtual void Delete(object id)
+        public virtual int Delete(object id)
         {
             T entity = Db.Set<T>().Find(id);
             Db.Entry(entity).State = EntityState.Deleted;
+            return -1;
         }
         /// <summary>
         ///  通过实体对象逻辑删除一条数据
         /// </summary>
         /// <param name="entity">实体对象</param>
-        public virtual void DeleteByLogical(T entity)
+        public virtual int DeleteByLogical(T entity)
         {
             Db.Entry(entity).Property("IsDeleted").CurrentValue = true;
             Db.Entry(entity).Property("IsDeleted").IsModified = true;
+            return -1;
         }
         /// <summary>
         /// 通过实体对象删除一条数据
         /// </summary>
         /// <param name="id">主键</param>
-        public virtual void DeleteByLogical(object id)
+        public virtual int DeleteByLogical(object id)
         {
             T entity = Db.Set<T>().Find(id);
             Db.Entry(entity).Property("IsDeleted").CurrentValue = true;
             Db.Entry(entity).Property("IsDeleted").IsModified = true;
+            return -1;
         }
         #endregion
 

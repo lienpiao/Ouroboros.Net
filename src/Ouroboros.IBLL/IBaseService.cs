@@ -30,7 +30,7 @@ namespace Ouroboros.IBLL
         /// 增加一条数据
         /// </summary>
         /// <param name="entity">实体对象</param>
-        void Insert(T entity);
+        T Insert(T entity);
 
         #endregion
 
@@ -40,7 +40,7 @@ namespace Ouroboros.IBLL
         /// 更新一条数据
         /// </summary>
         /// <param name="entity">实体对象</param>
-        void Update(T entity);
+        T Update(T entity);
 
         #endregion
 
@@ -88,22 +88,22 @@ namespace Ouroboros.IBLL
         /// 通过实体对象删除一条数据
         /// </summary>
         /// <param name="entity">实体对象</param>
-        void Delete(T entity);
+        int Delete(T entity);
         /// <summary>
         /// 通过主键删除一条数据
         /// </summary>
         /// <param name="id"></param>
-        void Delete(object id);
+        int Delete(object id);
         /// <summary>
         ///  通过实体对象逻辑删除一条数据
         /// </summary>
         /// <param name="entity">实体对象</param>
-        void DeleteByLogical(T entity);
+        int DeleteByLogical(T entity);
         /// <summary>
         /// 通过实体对象删除一条数据
         /// </summary>
         /// <param name="id">主键</param>
-        void DeleteByLogical(object id);
+        int DeleteByLogical(object id);
         #endregion
     }
 }
