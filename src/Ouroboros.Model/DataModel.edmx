@@ -6,38 +6,38 @@
     <edmx:StorageModels>
     <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="DataModelStoreContainer">
-    <EntitySet Name="SysUserSet" EntityType="DataModel.Store.SysUserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SysUser" EntityType="DataModel.Store.SysUser" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SysUserAction" EntityType="DataModel.Store.SysUserAction" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SysAction" EntityType="DataModel.Store.SysAction" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SysRole" EntityType="DataModel.Store.SysRole" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="SysUserSysRole" EntityType="DataModel.Store.SysUserSysRole" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="SysRoleSysAction" EntityType="DataModel.Store.SysRoleSysAction" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SysUserRole" EntityType="DataModel.Store.SysUserRole" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SysRoleAction" EntityType="DataModel.Store.SysRoleAction" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="SysUserSysUserAction" Association="DataModel.Store.SysUserSysUserAction">
-      <End Role="SysUser" EntitySet="SysUserSet" />
+      <End Role="SysUser" EntitySet="SysUser" />
       <End Role="SysUserAction" EntitySet="SysUserAction" />
     </AssociationSet>
     <AssociationSet Name="SysActionSysUserAction" Association="DataModel.Store.SysActionSysUserAction">
       <End Role="SysAction" EntitySet="SysAction" />
       <End Role="SysUserAction" EntitySet="SysUserAction" />
     </AssociationSet>
-    <AssociationSet Name="FK_SysUserSysRole_SysUser" Association="DataModel.Store.FK_SysUserSysRole_SysUser">
-      <End Role="SysUser" EntitySet="SysUserSet" />
-      <End Role="SysUserSysRole" EntitySet="SysUserSysRole" />
+    <AssociationSet Name="FK_SysUserRole_SysUser" Association="DataModel.Store.FK_SysUserRole_SysUser">
+      <End Role="SysUser" EntitySet="SysUser" />
+      <End Role="SysUserRole" EntitySet="SysUserRole" />
     </AssociationSet>
-    <AssociationSet Name="FK_SysUserSysRole_SysRole" Association="DataModel.Store.FK_SysUserSysRole_SysRole">
+    <AssociationSet Name="FK_SysUserRole_SysRole" Association="DataModel.Store.FK_SysUserRole_SysRole">
       <End Role="SysRole" EntitySet="SysRole" />
-      <End Role="SysUserSysRole" EntitySet="SysUserSysRole" />
+      <End Role="SysUserRole" EntitySet="SysUserRole" />
     </AssociationSet>
-    <AssociationSet Name="FK_SysRoleSysAction_SysRole" Association="DataModel.Store.FK_SysRoleSysAction_SysRole">
+    <AssociationSet Name="FK_SysRoleAction_SysRole" Association="DataModel.Store.FK_SysRoleAction_SysRole">
       <End Role="SysRole" EntitySet="SysRole" />
-      <End Role="SysRoleSysAction" EntitySet="SysRoleSysAction" />
+      <End Role="SysRoleAction" EntitySet="SysRoleAction" />
     </AssociationSet>
-    <AssociationSet Name="FK_SysRoleSysAction_SysAction" Association="DataModel.Store.FK_SysRoleSysAction_SysAction">
+    <AssociationSet Name="FK_SysRoleAction_SysAction" Association="DataModel.Store.FK_SysRoleAction_SysAction">
       <End Role="SysAction" EntitySet="SysAction" />
-      <End Role="SysRoleSysAction" EntitySet="SysRoleSysAction" />
+      <End Role="SysRoleAction" EntitySet="SysRoleAction" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="SysUserSet">
+  <EntityType Name="SysUser">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -84,7 +84,7 @@
     <Property Name="IsActlve" Type="bit" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" DefaultValue="false" />
   </EntityType>
-  <EntityType Name="SysUserSysRole">
+  <EntityType Name="SysUserRole">
     <Key>
       <PropertyRef Name="SysUser_Id" />
       <PropertyRef Name="SysRole_Id" />
@@ -92,7 +92,7 @@
     <Property Name="SysUser_Id" Type="int" Nullable="false" />
     <Property Name="SysRole_Id" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="SysRoleSysAction">
+  <EntityType Name="SysRoleAction">
     <Key>
       <PropertyRef Name="SysRole_Id" />
       <PropertyRef Name="SysAction_Id" />
@@ -101,7 +101,7 @@
     <Property Name="SysAction_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="SysUserSysUserAction">
-    <End Role="SysUser" Type="DataModel.Store.SysUserSet" Multiplicity="1" />
+    <End Role="SysUser" Type="DataModel.Store.SysUser" Multiplicity="1" />
     <End Role="SysUserAction" Type="DataModel.Store.SysUserAction" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SysUser">
@@ -124,50 +124,50 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SysUserSysRole_SysUser">
-    <End Role="SysUser" Type="DataModel.Store.SysUserSet" Multiplicity="1" />
-    <End Role="SysUserSysRole" Type="DataModel.Store.SysUserSysRole" Multiplicity="*" />
+  <Association Name="FK_SysUserRole_SysUser">
+    <End Role="SysUser" Type="DataModel.Store.SysUser" Multiplicity="1" />
+    <End Role="SysUserRole" Type="DataModel.Store.SysUserRole" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SysUser">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="SysUserSysRole">
+      <Dependent Role="SysUserRole">
         <PropertyRef Name="SysUser_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SysUserSysRole_SysRole">
-    <End Role="SysUserSysRole" Type="DataModel.Store.SysUserSysRole" Multiplicity="*" />
+  <Association Name="FK_SysUserRole_SysRole">
+    <End Role="SysUserRole" Type="DataModel.Store.SysUserRole" Multiplicity="*" />
     <End Role="SysRole" Type="DataModel.Store.SysRole" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="SysRole">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="SysUserSysRole">
+      <Dependent Role="SysUserRole">
         <PropertyRef Name="SysRole_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SysRoleSysAction_SysRole">
+  <Association Name="FK_SysRoleAction_SysRole">
     <End Role="SysRole" Type="DataModel.Store.SysRole" Multiplicity="1" />
-    <End Role="SysRoleSysAction" Type="DataModel.Store.SysRoleSysAction" Multiplicity="*" />
+    <End Role="SysRoleAction" Type="DataModel.Store.SysRoleAction" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SysRole">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="SysRoleSysAction">
+      <Dependent Role="SysRoleAction">
         <PropertyRef Name="SysRole_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SysRoleSysAction_SysAction">
-    <End Role="SysRoleSysAction" Type="DataModel.Store.SysRoleSysAction" Multiplicity="*" />
+  <Association Name="FK_SysRoleAction_SysAction">
+    <End Role="SysRoleAction" Type="DataModel.Store.SysRoleAction" Multiplicity="*" />
     <End Role="SysAction" Type="DataModel.Store.SysAction" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="SysAction">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="SysRoleSysAction">
+      <Dependent Role="SysRoleAction">
         <PropertyRef Name="SysAction_Id" />
       </Dependent>
     </ReferentialConstraint>
@@ -295,7 +295,7 @@
   <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="DataModelContainer">
     <EntitySetMapping Name="SysUser">
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.SysUser)">
-        <MappingFragment StoreEntitySet="SysUserSet">
+        <MappingFragment StoreEntitySet="SysUser">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="ShowName" ColumnName="ShowName" />
@@ -344,7 +344,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="SysUserRole" TypeName="DataModel.SysUserRole" StoreEntitySet="SysUserSysRole">
+    <AssociationSetMapping Name="SysUserRole" TypeName="DataModel.SysUserRole" StoreEntitySet="SysUserRole">
       <EndProperty Name="SysUser">
         <ScalarProperty Name="Id" ColumnName="SysUser_Id" />
       </EndProperty>
@@ -352,7 +352,7 @@
         <ScalarProperty Name="Id" ColumnName="SysRole_Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="SysRoleAction" TypeName="DataModel.SysRoleAction" StoreEntitySet="SysRoleSysAction">
+    <AssociationSetMapping Name="SysRoleAction" TypeName="DataModel.SysRoleAction" StoreEntitySet="SysRoleAction">
       <EndProperty Name="SysRole">
         <ScalarProperty Name="Id" ColumnName="SysRole_Id" />
       </EndProperty>
