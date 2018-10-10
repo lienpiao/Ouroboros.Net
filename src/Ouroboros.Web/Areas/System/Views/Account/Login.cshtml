@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>后台登录</title>
+    <link href="~/Content/login.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="login">
+        <div class="message">Ouroboros.Net-用户登录</div>
+        <div id="darkbannerwrap"></div>
+
+        <form method="post">
+            <input name="action" value="login" type="hidden">
+            <input name="username" placeholder="用户名" required="" type="text">
+            <hr class="hr15">
+            <input name="password" placeholder="密码" required="" type="password">
+            <hr class="hr15">
+            <input name="code" placeholder="验证码" style="width:65%;" required="" type="text">
+            <div style="float:right;width:35%;height:50px">
+                <img style="height:50px;width:100%" src="~/images/web_login_bg.jpg" />
+            </div>
+            <hr class="hr15">
+            <div class="remember">
+                <input type="checkbox" id="remember" tabindex="4">
+                <label>记住密码</label>
+            </div>
+            <hr class="hr15">
+            <input value="登录" style="width:100%;" type="submit">
+            <hr class="hr20">
+        </form>
+    </div>
+    <div class="copyright">Copyright © 2018 <a href="http://www.mycodes.net/" target="_blank">源码之家</a></div>
+</body>
+</html>
