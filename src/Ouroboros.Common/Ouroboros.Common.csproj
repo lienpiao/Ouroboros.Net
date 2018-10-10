@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache\CacheHelper.cs" />
     <Compile Include="Cache\HttpRuntimeCache.cs" />
     <Compile Include="Cache\ICache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
