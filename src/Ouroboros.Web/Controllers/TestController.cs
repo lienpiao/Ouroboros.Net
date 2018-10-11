@@ -1,5 +1,4 @@
-﻿using Ninject;
-using Ouroboros.IBLL;
+﻿using Ouroboros.IBLL;
 using Ouroboros.Mvc.Infrastucture;
 using System;
 using System.Collections.Generic;
@@ -11,8 +10,6 @@ namespace Ouroboros.Web.Controllers
 {
     public class TestController : BaseController
     {
-        [Inject]
-        public ISysUserService SysUserService { get; set; }
 
         public TestController()
         {

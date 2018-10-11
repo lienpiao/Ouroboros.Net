@@ -14,15 +14,6 @@ namespace Ouroboros.IBLL
     /// <typeparam name="T">实体</typeparam>
     public interface IBaseService<T> where T : class, new()
     {
-        /// <summary>
-        /// 数据层访问统一入口工厂
-        /// </summary>
-        IDbSessionFactory DbSessionFactory { get; set; }
-
-        /// <summary>
-        /// 数据层访问统一入口
-        /// </summary>
-        IDbSession DbSessionContext { get; set; }
 
         #region Create
 

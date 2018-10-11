@@ -1,4 +1,5 @@
 ﻿using Ouroboros.Common;
+using Ouroboros.IBLL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,13 @@ namespace Ouroboros.Mvc.Infrastucture
         {
             this.DisposableObjects = new List<IDisposable>();
         }
+
+        #region 定义当前系统中所有的业务逻辑层的接口成员
+        protected ISysUserService SysUserService;
+        protected ISysRoleService SysRoleService;
+        protected ISysActionService SysActionService;
+        protected ISysUserActionService SysUserActionService;
+        #endregion
 
         #region 手动垃圾回收的机制
         protected IList<IDisposable> DisposableObjects { get; private set; }

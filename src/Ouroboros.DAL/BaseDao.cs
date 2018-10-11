@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -170,7 +171,29 @@ namespace Ouroboros.DAL
         /// </summary>
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Db.Dispose();
+        }
+
+        /// <summary>
+        /// 执行sql语句
+        /// </summary>
+        /// <param name="sql">命令字符串</param>
+        /// <param name="paras">要应用于命令字符串的参数</param>
+        /// <returns>执行命令后由数据库返回的结果</returns>
+        public int ExeucteSql(string sql, params SqlParameter[] paras)
+        {
+            DbContext db = DbContextFactory.GetCurrentThreadInstance();
+            return db.Database.ExecuteSqlCommand(sql, paras);
+        }
+
+        /// <summary>
+        /// 保存所有变化
+        /// </summary>
+        /// <returns></returns>
+        public int SaveChanges()
+        {
+            DbContext db = DbContextFactory.GetCurrentThreadInstance();
+            return db.SaveChanges();
         }
     }
 }

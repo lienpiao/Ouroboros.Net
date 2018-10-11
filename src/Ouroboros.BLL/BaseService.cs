@@ -13,59 +13,17 @@ namespace Ouroboros.BLL
     /// 业务逻辑层基类
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class BaseService<T> : IDisposable where T : class, new()
+    public class BaseService<T> : IDisposable where T : class, new()
     {
-        /// <summary>
-        /// 数据层统一访问入口工厂属性
-        /// </summary>
-        private IDbSessionFactory _DbSessionFactory;
-
-        public IDbSessionFactory DbSessionFactory
-        {
-            get
-            {
-                if (_DbSessionFactory == null)
-                {
-                    _DbSessionFactory = new DbSessionFactory();
-                }
-                return _DbSessionFactory;
-            }
-            set { _DbSessionFactory = value; }
-        }
-
-        /// <summary>
-        /// 数据层统一访问入口属性
-        /// </summary>
-        private IDbSession _DbSessionContext;
-
-        public IDbSession DbSessionContext
-        {
-            get
-            {
-                if (_DbSessionContext == null)
-                {
-                    _DbSessionContext = DbSessionFactory.GetCurrentDbSession();
-                }
-                return _DbSessionContext;
-            }
-            set { _DbSessionContext = value; }
-        }
 
         /// <summary>
         /// 当前Dao,在子类中实现--通过一个抽象方法在构造函数中设置
         /// </summary>
         protected IBaseDao<T> CurrentDao;
 
-        /// <summary>
-        /// 借助此方法在子类中的重写，为XXXService设置当前Dao
-        /// </summary>
-        /// <returns></returns>
-        public abstract bool SetCurrentDao();
-
         public BaseService()
         {
             this.DisposableObjects = new List<IDisposable>();
-            this.SetCurrentDao();
         }
 
         #region Create
@@ -77,7 +35,7 @@ namespace Ouroboros.BLL
         public T Insert(T entity)
         {
             this.CurrentDao.Insert(entity);
-            DbSessionContext.SaveChanges();
+            CurrentDao.SaveChanges();
             return entity;
         }
 
@@ -92,7 +50,7 @@ namespace Ouroboros.BLL
         public T Update(T entity)
         {
             this.CurrentDao.Update(entity);
-            if (this.DbSessionContext.SaveChanges() <= 0)
+            if (this.CurrentDao.SaveChanges() <= 0)
             {
                 return null;
             }
@@ -163,7 +121,7 @@ namespace Ouroboros.BLL
         public int Delete(T entity)
         {
             this.CurrentDao.Delete(entity);
-            return DbSessionContext.SaveChanges();
+            return CurrentDao.SaveChanges();
         }
         /// <summary>
         /// 通过主键删除一条数据
@@ -172,7 +130,7 @@ namespace Ouroboros.BLL
         public int Delete(object id)
         {
             this.CurrentDao.Delete(id);
-            return DbSessionContext.SaveChanges();
+            return CurrentDao.SaveChanges();
         }
         /// <summary>
         ///  通过实体对象逻辑删除一条数据
@@ -181,7 +139,7 @@ namespace Ouroboros.BLL
         public int DeleteByLogical(T entity)
         {
             this.CurrentDao.DeleteByLogical(entity);
-            return DbSessionContext.SaveChanges();
+            return CurrentDao.SaveChanges();
         }
         /// <summary>
         /// 通过实体对象删除一条数据
@@ -190,7 +148,7 @@ namespace Ouroboros.BLL
         public int DeleteByLogical(object id)
         {
             this.CurrentDao.DeleteByLogical(id);
-            return DbSessionContext.SaveChanges();
+            return CurrentDao.SaveChanges();
         }
         #endregion
 

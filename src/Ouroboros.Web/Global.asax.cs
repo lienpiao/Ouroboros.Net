@@ -12,12 +12,12 @@ namespace Ouroboros.Web
     {
         protected void Application_Start()
         {
+            //利用autofac实现MVC项目的IOC和DI
+            AutofacConfig.Register();
             //注册区域路由规则
             AreaRegistration.RegisterAllAreas();
             //注册网址路由
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            //告诉MVC用新建的类(NinjectControllerFactory)来创建控制器对象。
-            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
             //注册全局过滤器
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
         }

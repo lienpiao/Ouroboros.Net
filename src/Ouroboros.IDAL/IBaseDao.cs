@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -91,5 +92,19 @@ namespace Ouroboros.IDAL
         /// <param name="id">主键</param>
         int DeleteByLogical(object id);
         #endregion
+
+        /// <summary>
+        /// 执行sql语句
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="paras"></param>
+        /// <returns></returns>
+        int ExeucteSql(string sql, params SqlParameter[] paras);
+
+        /// <summary>
+        /// 保存所有变化
+        /// </summary>
+        /// <returns></returns>
+        int SaveChanges();
     }
 }

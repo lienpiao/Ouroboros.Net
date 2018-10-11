@@ -1,5 +1,4 @@
-﻿using Ninject;
-using Ouroboros.Common;
+﻿using Ouroboros.Common;
 using Ouroboros.IBLL;
 using Ouroboros.Mvc.Attrs;
 using Ouroboros.Mvc.Infrastucture;
@@ -16,8 +15,11 @@ namespace Ouroboros.Web.Areas.System.Controllers
     [SkipCheckLogin]
     public class AccountController : BaseController
     {
-        [Inject]
-        public ISysUserService SysUserService { get; set; }
+        public AccountController(ISysUserService sysUserService)
+        {
+            base.SysUserService = sysUserService;
+            this.AddDisposableObject(SysUserService);
+        }
 
         /// <summary>
         /// 登录
@@ -28,7 +30,7 @@ namespace Ouroboros.Web.Areas.System.Controllers
         {
             LoginViewModel info = new LoginViewModel()
             {
-                 RememberMe = false
+                RememberMe = false
             };
 
             //1.0 判断cookie[Keys.IsMember]!=null 则应该将登录视图上的记住3天勾选上

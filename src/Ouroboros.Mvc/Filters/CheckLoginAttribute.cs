@@ -1,6 +1,7 @@
-﻿using Ninject;
+﻿using Autofac;
 using Ouroboros.BLL;
 using Ouroboros.Common;
+using Ouroboros.Common.Cache;
 using Ouroboros.IBLL;
 using Ouroboros.Mvc.Attrs;
 using System;
@@ -43,8 +44,9 @@ namespace Ouroboros.Mvc.Filters
                 {
                     //3.1 取出cookies中存入的uid的值
                     string uid = filterContext.HttpContext.Request.Cookies[KeyManage.RememberMe].Value;
-                    //3.2 找出kernal容器获取ISysUserService接口实现类的对象实例 暂无
-                    ISysUserService sysUserService = new SysUserService();
+                    //3.2  找autofac容器获取IsysUserInfoServices接口的具体实现类的对象实例
+                    var cont = CacheHelper.GetCache<IContainer>(KeyManage.AutofacContainer);
+                    ISysUserService sysUserService = cont.Resolve<ISysUserService>();
                     //3.3 根据uid查出用户
                     int userId = int.Parse(uid);
                     var user = sysUserService.GetModel(x => x.Id == userId);

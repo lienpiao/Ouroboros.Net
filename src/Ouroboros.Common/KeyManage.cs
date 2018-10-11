@@ -26,5 +26,10 @@ namespace Ouroboros.Common
         /// </summary>
         public const string RememberMe = "ouroborosrememberme";
 
+        /// <summary>
+        /// 用于缓存整个autofac的容器对象的 缓存key
+        /// </summary>
+        public const string AutofacContainer = "ouroborosautofacContainer";
+
     }
 }

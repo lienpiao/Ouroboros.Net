@@ -61,7 +61,7 @@ namespace Ouroboros.Common.Cache
         }
 
         /// <summary>
-        /// 获取缓存
+        /// 修改缓存
         /// </summary>
         /// <typeparam name="T">实体</typeparam>
         /// <param name="key">用于引用该项的缓存键</param>
