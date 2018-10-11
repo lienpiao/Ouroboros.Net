@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attrs\SkipCheckLogin.cs" />
+    <Compile Include="Filters\CheckLoginAttribute.cs" />
     <Compile Include="Infrastucture\BaseController .cs" />
     <Compile Include="Infrastucture\NinjectControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,9 +58,17 @@
       <Project>{c551ad8d-2504-41fb-9dd0-b1344c8c55b3}</Project>
       <Name>Ouroboros.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ouroboros.Common\Ouroboros.Common.csproj">
+      <Project>{01E5F1A0-7541-426A-B3D2-D65BEEF593DB}</Project>
+      <Name>Ouroboros.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ouroboros.IBLL\Ouroboros.IBLL.csproj">
       <Project>{dd7f6e72-cb2e-4838-a4b3-2aaba479a614}</Project>
       <Name>Ouroboros.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ouroboros.Model\Ouroboros.Model.csproj">
+      <Project>{14DCE9AD-BEBC-4F23-A944-9658613420B3}</Project>
+      <Name>Ouroboros.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

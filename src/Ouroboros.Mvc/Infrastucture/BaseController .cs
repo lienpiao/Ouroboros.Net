@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ouroboros.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,6 +43,28 @@ namespace Ouroboros.Mvc.Infrastucture
                 }
             }
             base.Dispose(disposing);
+        }
+        #endregion
+
+        #region 封装ajax请求的返回方法
+        protected ActionResult WriteSuccess(string msg)
+        {
+            return Json(new { status = (int)EnumManage.AjaxState.sucess, msg = msg });
+        }
+
+        protected ActionResult WriteSuccess(string msg, object obj)
+        {
+            return Json(new { status = (int)EnumManage.AjaxState.sucess, msg = msg, datas = obj });
+        }
+
+        protected ActionResult WriteError(string errmsg)
+        {
+            return Json(new { status = (int)EnumManage.AjaxState.error, msg = errmsg });
+        }
+
+        protected ActionResult WriteError(Exception ex)
+        {
+            return Json(new { status = (int)EnumManage.AjaxState.error, msg = ex.Message });
         }
         #endregion
     }

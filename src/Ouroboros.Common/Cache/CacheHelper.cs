@@ -13,7 +13,7 @@ namespace Ouroboros.Common.Cache
     {
         public static ICache Cache { get; set; }
 
-        CacheHelper()
+        static CacheHelper()
         {
             Cache = new HttpRuntimeCache();
         }
@@ -23,7 +23,7 @@ namespace Ouroboros.Common.Cache
         /// </summary>
         /// <param name="key">用于引用该项的缓存键</param>
         /// <param name="value">要插入缓存中的对象</param>
-        public void AddCache(string key, object value)
+        public static void AddCache(string key, object value)
         {
             Cache.AddCache(key, value);
         }
@@ -34,7 +34,7 @@ namespace Ouroboros.Common.Cache
         /// <param name="key"> 用于引用该项的缓存键</param>
         /// <param name="value">要插入缓存中的对象</param>
         /// <param name="expDate">所插入对象将到期并被从缓存中移除的时间。要避免可能的本地时间问题（例如从标准时间改为夏时制），请使用 System.DateTime.UtcNow 而不是 System.DateTime.Now 作为此参数值。</param>
-        public void AddCache(string key, object value, DateTime expDate)
+        public static void AddCache(string key, object value, DateTime expDate)
         {
             Cache.AddCache(key, value, expDate);
         }
@@ -44,7 +44,7 @@ namespace Ouroboros.Common.Cache
         /// </summary>
         /// <param name="key">用于引用该项的缓存键</param>
         /// <returns></returns>
-        public object GetCache(string key)
+        public static object GetCache(string key)
         {
             return Cache.GetCache(key);
         }
@@ -55,7 +55,7 @@ namespace Ouroboros.Common.Cache
         /// <typeparam name="T">实体</typeparam>
         /// <param name="key">用于引用该项的缓存键</param>
         /// <returns></returns>
-        public T GetCache<T>(string key)
+        public static T GetCache<T>(string key)
         {
             return (T)Cache.GetCache(key);
         }
@@ -66,7 +66,7 @@ namespace Ouroboros.Common.Cache
         /// <typeparam name="T">实体</typeparam>
         /// <param name="key">用于引用该项的缓存键</param>
         /// <returns></returns>
-        public void SetCache(string key, object value)
+        public static void SetCache(string key, object value)
         {
             Cache.SetCache(key, value);
         }
@@ -77,7 +77,7 @@ namespace Ouroboros.Common.Cache
         /// <param name="key">用于引用该项的缓存键</param>
         /// <param name="value">要插入缓存中的对象</param>
         /// <param name="extDate">所插入对象将到期并被从缓存中移除的时间</param>
-        public void SetCache(string key, object value, DateTime extDate)
+        public static void SetCache(string key, object value, DateTime extDate)
         {
             Cache.SetCache(key, value, extDate);
         }
