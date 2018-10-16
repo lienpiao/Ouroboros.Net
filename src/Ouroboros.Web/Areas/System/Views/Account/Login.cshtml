@@ -10,8 +10,7 @@
     <meta http-equiv="Expires" content="0">
     <title>后台登录</title>
     <link href="~/Content/login.css" rel="stylesheet" />
-    <link href="~/Content/easyui/themes/gray/easyui.css" rel="stylesheet" />
-    <link href="~/Content/easyui/themes/icon.css" rel="stylesheet" />
+    <link href="~/Content/layuicms/layui/css/modules/layer/default/layer.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -22,9 +21,9 @@
         {
             Url = Url.Action("Login", "Account"),
             HttpMethod = "Post",
-            OnBegin = "jeHelper.loading",
+            OnBegin = "begin",
             OnSuccess = "success"
-        }, new { id = "f1" }))
+        }, new { index = "" }))
         {
             <input name="action" value="login" type="hidden">
             <input name="Name" placeholder="用户名" required="" type="text">
@@ -51,8 +50,7 @@
 </html>
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-<script src="~/Content/easyui/jquery.easyui.min.js"></script>
-<script src="~/Scripts/jquery.easyui.plus.js"></script>
+<script src="~/Content/layuicms/layui/lay/modules/layer.js"></script>
 <script type="text/javascript">
     //刷新验证码
     function resetVcode() {
@@ -60,16 +58,19 @@
         var url = '@Url.Action("ShowVCode", "Account")' + "?rid=" + Math.random();
         $("#imgcode").attr("src", url);
     }
+    function begin() {
+        index = layer.load();
+    }
     function success(ajaxobj) {
         //ajaxobj格式:{status=0/1/2,msg="登录成功/异常信息"  }
         //判断处理状态如果为1则表示有错误
         if (ajaxobj.status == "1") {
-            $.messager.alert('登录失败', ajaxobj.msg, 'error');
+            layer.msg(ajaxobj.msg);
         } else {
             //跳转到首页
             window.location = '@Url.Action("Index","Home")';
         }
         //关闭正在请求中....的提示
-        jeHelper.loadEnd();
+        layer.close(index);
     }
 </script>

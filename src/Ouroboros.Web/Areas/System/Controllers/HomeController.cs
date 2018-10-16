@@ -13,5 +13,10 @@ namespace Ouroboros.Web.Areas.System.Controllers
         {
             return View();
         }
+
+        public ActionResult Main()
+        {
+            return View();
+        }
     }
 }

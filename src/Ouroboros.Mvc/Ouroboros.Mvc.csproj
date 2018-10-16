@@ -50,6 +50,7 @@
     <Compile Include="Attrs\SkipCheckLogin.cs" />
     <Compile Include="Filters\CheckLoginAttribute.cs" />
     <Compile Include="Infrastucture\BaseController .cs" />
+    <Compile Include="Infrastucture\UserManage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
