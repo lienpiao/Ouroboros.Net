@@ -9,13 +9,14 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>NoLogin</title>
-    <link href="~/Content/easyui/themes/gray/easyui.css" rel="stylesheet" />
-    <link href="~/Content/easyui/themes/icon.css" rel="stylesheet" />
+    <link href="~/Content/layui/css/modules/layer/default/layer.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Content/easyui/jquery.easyui.min.js"></script>
+    <script src="~/Content/layui/lay/modules/layer.js"></script>
     <script type="text/javascript">
         $(function () {
-            $.messager.alert('登录提示', '您未登录,即将跳转到登录页面', 'warning', function () { ToUrl() });
+            layer.alert('您未登录,即将跳转到登录页面', function (index) {
+                ToUrl()
+            });
             setTimeout(ToUrl, 2000);
         });
         function ToUrl() {

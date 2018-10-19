@@ -1,39 +1,70 @@
 {
-	"contentManagement": [
-		{
-			"title": "文章列表",
-			"icon": "icon-text",
-			"href": "page/news/newsList.html",
-			"spread": false
-		},
-		{
-			"title": "图片管理",
-			"icon": "&#xe634;",
-			"href": "page/img/images.html",
-			"spread": false
-		},
-		{
-			"title": "其他页面",
-			"icon": "&#xe630;",
-			"href": "",
-			"spread": false,
-			"children": [
-				{
-					"title": "404页面",
-					"icon": "&#xe61c;",
-					"href": "page/404.html",
-					"spread": false
-				},
-				{
-					"title": "登录",
-					"icon": "&#xe609;",
-					"href": "page/login/login.html",
-					"spread": false,
-					"target": "_blank"
-				}
-			]
-		}
-	],
+  "contentManagement": [
+    {
+      "title": "文章列表",
+      "icon": "icon-text",
+      "href": "page/news/newsList.html",
+      "spread": false
+    },
+    {
+      "title": "图片管理",
+      "icon": "&#xe634;",
+      "href": "page/img/images.html",
+      "spread": false
+    },
+    {
+      "title": "其他页面",
+      "icon": "&#xe630;",
+      "href": "",
+      "spread": false,
+      "children": [
+        {
+          "title": "404页面",
+          "icon": "&#xe61c;",
+          "href": "page/404.html",
+          "spread": false
+        },
+        {
+          "title": "登录",
+          "icon": "&#xe609;",
+          "href": "page/login/login.html",
+          "spread": false,
+          "target": "_blank"
+        }
+      ]
+    }
+  ],
+  "1": [
+     {
+      "title": "权限管理",
+      "icon": "&#xe630;",
+      "href": "",
+      "spread": false,
+      "children": [
+        {
+          "title": "用户管理",
+          "icon": "&#xe61c;",
+          "href": "page/404.html",
+          "spread": false
+        },
+        {
+          "title": "角色管理",
+          "icon": "&#xe609;",
+          "href": "page/login/login.html",
+          "spread": false,
+          "target": "_blank"
+        }
+        ,
+        {
+          "title": "模块管理",
+          "icon": "&#xe609;",
+          "href": "page/login/login.html",
+          "spread": false,
+          "target": "_blank"
+        }
+      ]
+    }
+  ],
 	"memberCenter": [
 		{
 			"title": "用户中心",
