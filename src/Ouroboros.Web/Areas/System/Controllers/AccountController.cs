@@ -2,7 +2,7 @@
 using Ouroboros.IBLL;
 using Ouroboros.Mvc.Attrs;
 using Ouroboros.Mvc.Infrastucture;
-using Ouroboros.Web.Models;
+using Ouroboros.Web.Areas.System.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Ouroboros.Web.Models
+namespace Ouroboros.Web.Areas.System.Models
 {
     public class LoginViewModel
     {
