@@ -96,5 +96,11 @@ namespace Ouroboros.IBLL
         /// <param name="id">主键</param>
         int DeleteByLogical(object id);
         #endregion
+
+        /// <summary>
+        /// 保存所有变化
+        /// </summary>
+        /// <returns></returns>
+        int SaveChanges();
     }
 }

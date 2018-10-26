@@ -152,6 +152,16 @@ namespace Ouroboros.BLL
         }
         #endregion
 
+        /// <summary>
+        /// 保存所有变化
+        /// </summary>
+        /// <returns></returns>
+        public int SaveChanges()
+        {
+            
+            return CurrentDao.SaveChanges();
+        }
+
         #region 将BaseService的子类中的CurrentDao销毁
         /// <summary>
         /// IList<IDisposable>的集合
