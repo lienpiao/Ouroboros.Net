@@ -1,0 +1,58 @@
+﻿@model Ouroboros.Model.Dto.SysUserDto
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/System/Views/Shared/_layuicms.cshtml";
+}
+<div class="layui-container">
+    <div class="layui-row">
+        <div class="layui-col-md9">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="UserName" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">显示名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="ShowName" required lay-verify="required" placeholder="请输入显示名" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码框</label>
+                    <div class="layui-input-block">
+                        <input type="Password" name="Password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        //Demo
+        layui.use('form', function () {
+            var form = layui.form;
+            form.on('submit(formDemo)', function (data) {
+                $.post("/user/add", data.field, function (result) {
+                    alert(result);
+                    if (result.status == "1") {
+
+                    }
+                    else {
+
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+}

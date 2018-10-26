@@ -65,6 +65,10 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -106,6 +110,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\System\Scripts\newsAdd.js" />
+    <Content Include="Areas\System\Scripts\userList.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\layuicms\css\index.css" />
@@ -358,7 +364,8 @@
     <Content Include="Areas\System\Views\Role\Index.cshtml" />
     <Content Include="Areas\System\Views\Action\Index.cshtml" />
     <Content Include="Areas\System\Views\User\Index.cshtml" />
-    <Content Include="Areas\System\Views\Shared\_List.cshtml" />
+    <Content Include="Areas\System\Views\Shared\_layuicms.cshtml" />
+    <Content Include="Areas\System\Views\User\Add.cshtml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

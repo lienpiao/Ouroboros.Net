@@ -26,45 +26,45 @@ namespace Ouroboros.Model
         }
 
         #region 3.生成所有的实体的两个转换扩展方法
-        public static SysUserDto EntityMap(SysUser model)
+        public static SysUserDto EntityMap(this SysUser model)
         {
             //将一个实体转换成另外一个实体
             return Mapper.Map<SysUser, SysUserDto>(model);
         }
-        public static SysUser EntityMap(SysUserDto model)
+        public static SysUser EntityMap(this SysUserDto model)
         {
             //将一个实体转换成另外一个实体
             return Mapper.Map<SysUserDto, SysUser>(model);
         }
 
-        public static SysRoleDto EntityMap(SysRole model)
+        public static SysRoleDto EntityMap(this SysRole model)
         {
             //将一个实体转换成另外一个实体
             return Mapper.Map<SysRole, SysRoleDto>(model);
         }
-        public static SysRole EntityMap(SysRoleDto model)
+        public static SysRole EntityMap(this SysRoleDto model)
         {
             //将一个实体转换成另外一个实体
             return Mapper.Map<SysRoleDto, SysRole>(model);
         }
 
-        public static SysActionDto EntityMap(SysAction model)
+        public static SysActionDto EntityMap(this SysAction model)
         {
             //将一个实体转换成另外一个实体
             return Mapper.Map<SysAction, SysActionDto>(model);
         }
-        public static SysAction EntityMap(SysActionDto model)
+        public static SysAction EntityMap(this SysActionDto model)
         {
             //将一个实体转换成另外一个实体
             return Mapper.Map<SysActionDto, SysAction>(model);
         }
 
-        public static SysUserActionDto EntityMap(SysUserAction model)
+        public static SysUserActionDto EntityMap(this SysUserAction model)
         {
             //将一个实体转换成另外一个实体
             return Mapper.Map<SysUserAction, SysUserActionDto>(model);
         }
-        public static SysUserAction EntityMap(SysUserActionDto model)
+        public static SysUserAction EntityMap(this SysUserActionDto model)
         {
             //将一个实体转换成另外一个实体
             return Mapper.Map<SysUserActionDto, SysUserAction>(model);

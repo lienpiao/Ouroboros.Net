@@ -1,39 +1,31 @@
 ﻿
 @{
     ViewBag.Title = "用户列表";
-    Layout = "~/Areas/System/Views/Shared/_List.cshtml";
+    Layout = "~/Areas/System/Views/Shared/_layuicms.cshtml";
 }
 <blockquote class="layui-elem-quote quoteBox">
     <form class="layui-form">
         <div class="layui-inline">
             <div class="layui-input-inline">
-                <input type="text" class="layui-input searchVal" placeholder="请输入搜索的内容" />
+                <input type="text" class="layui-input searchVal" placeholder="用户名" />
             </div>
             <a class="layui-btn search_btn" data-type="reload">搜索</a>
         </div>
         <div class="layui-inline">
-            <a class="layui-btn layui-btn-normal addNews_btn">新增</a>
+            <a class="layui-btn layui-btn-normal addUser_btn">新增</a>
         </div>
         <div class="layui-inline">
             <a class="layui-btn layui-btn-danger layui-btn-normal delAll_btn">批量删除</a>
         </div>
     </form>
 </blockquote>
-<table id="newsList" lay-filter="newsList"></table>
-<!--审核状态-->
-<script type="text/html" id="newsStatus">
-    {{#  if(d.newsStatus == "1"){ }}
-    <span class="layui-red">等待审核</span>
-    {{#  } else if(d.newsStatus == "0"){ }}
-    <span class="layui-blue">已存草稿</span>
-    {{#  } else { }}
-    审核通过
-    {{#  }}}
-</script>
+<table id="userList" lay-filter="userList"></table>
 
 <!--操作-->
-<script type="text/html" id="newsListBar">
+<script type="text/html" id="userListBar">
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
-    <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="look">预览</a>
 </script>
+@section Scripts{
+    <script src="~/Areas/System/Scripts/userList.js"></script>
+}

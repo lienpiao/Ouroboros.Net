@@ -16,7 +16,9 @@
     <form class="layui-form">
         @RenderBody()
     </form>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Content/layui/layui.js"></script>
-    <script type="text/javascript" src="newsList.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
