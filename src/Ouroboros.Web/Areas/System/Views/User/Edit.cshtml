@@ -1,29 +1,31 @@
 ﻿@model Ouroboros.Model.Dto.SysUserDto
 
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Edit";
     Layout = "~/Areas/System/Views/Shared/_layuicms.cshtml";
 }
 <div class="layui-container">
     <div class="layui-row">
         <div class="layui-col-md9">
             <form class="layui-form" action="">
+                <input type="hidden" name="Id" value="@Model.Id"  />
+                <input type="hidden" name="OldPassword" value="@Model.Password" />
                 <div class="layui-form-item">
                     <label class="layui-form-label">用户名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="UserName" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                        <input type="text" name="UserName" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" value="@Model.UserName">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">显示名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="ShowName" required lay-verify="required" placeholder="请输入显示名" autocomplete="off" class="layui-input">
+                        <input type="text" name="ShowName" required lay-verify="required" placeholder="请输入显示名" autocomplete="off" class="layui-input" value="@Model.ShowName">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">密码框</label>
                     <div class="layui-input-block">
-                        <input type="Password" name="Password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        <input type="Password" name="Password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" value="@Model.Password">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -42,7 +44,7 @@
             var form = layui.form;
             form.on('submit(formDemo)', function (data) {
                 var index = top.layer.msg('数据提交中，请稍候', { icon: 16, time: false, shade: 0.8 });
-                $.post("/user/add", data.field, function (result) {
+                $.post("/user/Edit", data.field, function (result) {
                     if (result.status == "0") {
                         setTimeout(function () {
                             top.layer.close(index);

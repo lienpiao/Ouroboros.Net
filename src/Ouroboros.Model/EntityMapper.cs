@@ -11,17 +11,17 @@ namespace Ouroboros.Model
         static EntityMapper()
         {
             #region 1.将Model和Dto中的所有实体类在AutoMapper内部建立一个关联
-            Mapper.Initialize(x => x.CreateMap<SysUser, SysUserDto>());
-            Mapper.Initialize(x => x.CreateMap<SysRole, SysRoleDto>());
-            Mapper.Initialize(x => x.CreateMap<SysAction, SysActionDto>());
-            Mapper.Initialize(x => x.CreateMap<SysUserAction, SysActionDto>());
+            Mapper.CreateMap<SysUser, SysUserDto>();
+            Mapper.CreateMap<SysRole, SysRoleDto>();
+            Mapper.CreateMap<SysAction, SysActionDto>();
+            Mapper.CreateMap<SysUserAction, SysActionDto>();
             #endregion
 
             #region 2.将Dto和Model中的所有实体类在AutoMapper内部建立一个关联
-            Mapper.Initialize(x => x.CreateMap<SysUserDto, SysUser>());
-            Mapper.Initialize(x => x.CreateMap<SysRoleDto, SysRole>());
-            Mapper.Initialize(x => x.CreateMap<SysActionDto, SysAction>());
-            Mapper.Initialize(x => x.CreateMap<SysUserActionDto, SysAction>());
+            Mapper.CreateMap<SysUserDto, SysUser>();
+            Mapper.CreateMap<SysRoleDto, SysRole>();
+            Mapper.CreateMap<SysActionDto, SysAction>();
+            Mapper.CreateMap<SysUserActionDto, SysAction>();
             #endregion
         }
 

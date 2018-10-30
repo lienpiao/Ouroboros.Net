@@ -40,11 +40,11 @@ layui.use(['form', 'layer', 'laydate', 'table', 'laytpl'], function () {
     });
 
     //添加用户
-    function addUser(State) {
+    function addUser(edit) {
         var url = "/system/user/add";
         var title ="添加用户"
-        if (State == "edit") {
-            url = "/system/user/edit"
+        if (edit) {
+            url = "/system/user/edit?id=" + edit.Id
             title="编辑用户"
         }       
         var index = layui.layer.open({
@@ -95,7 +95,7 @@ layui.use(['form', 'layer', 'laydate', 'table', 'laytpl'], function () {
         var layEvent = obj.event,
             data = obj.data;
         if (layEvent === 'edit') { //编辑
-            addUser('edit');
+            addUser(data);
         } else if (layEvent === 'del') { //删除
             layer.confirm('确定删除此用户？', { icon: 3, title: '提示信息' }, function (index) {
                 $.post("/user/Delete", { id: data.Id }, function (result) {

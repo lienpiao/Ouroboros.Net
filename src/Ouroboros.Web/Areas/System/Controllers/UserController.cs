@@ -73,6 +73,7 @@ namespace Ouroboros.Web.Areas.System.Controllers
                 {
                     return base.WriteError("实体验证失败");
                 }
+                dto.Password = EncryptionHelper.Get32MD5One(dto.Password);
                 SysUser entity = dto.EntityMap();
                 SysUserService.Insert(entity);
                 SysUserService.SaveChanges();
@@ -84,6 +85,41 @@ namespace Ouroboros.Web.Areas.System.Controllers
             }
         }
 
+        #endregion
+
+        #region 编辑
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            //1 根据id做查询
+            var model = SysUserService.GetModel(id);
+            //2 将老数据传入视图
+            return View(model.EntityMap());
+        }
+
+        [HttpPost]
+        public ActionResult Edit(SysUserDto dto)
+        {
+            try
+            {
+                if (ModelState.IsValid == false)
+                {
+                    return WriteError("实体验证失败");
+                }
+                if (dto.Password!=dto.OldPassword)
+                {
+                    dto.Password = EncryptionHelper.Get32MD5One(dto.Password);
+                }
+                SysUser entity = dto.EntityMap();
+                SysUserService.Update(entity);
+                SysUserService.SaveChanges();
+                return WriteSuccess("用户编辑成功");
+            }
+            catch (Exception ex)
+            {
+                return WriteError(ex);
+            }
+        }
         #endregion
 
         /// <summary>
