@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/09/2018 14:08:11
--- Generated from EDMX file: D:\Users\Lilb\Documents\GitHub\Ouroboros.Net\src\Ouroboros.Model\DataModel.edmx
+-- Date Created: 11/17/2018 11:51:47
+-- Generated from EDMX file: D:\Users\Documents\GitHub\Ouroboros.Net\src\Ouroboros.Model\DataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -23,25 +23,25 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SysActionSysUserAction]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SysUserAction] DROP CONSTRAINT [FK_SysActionSysUserAction];
 GO
-IF OBJECT_ID(N'[dbo].[FK_SysUserSysRole_SysUser]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SysUserSysRole] DROP CONSTRAINT [FK_SysUserSysRole_SysUser];
+IF OBJECT_ID(N'[dbo].[FK_SysUserRole_SysUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SysUserRole] DROP CONSTRAINT [FK_SysUserRole_SysUser];
 GO
-IF OBJECT_ID(N'[dbo].[FK_SysUserSysRole_SysRole]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SysUserSysRole] DROP CONSTRAINT [FK_SysUserSysRole_SysRole];
+IF OBJECT_ID(N'[dbo].[FK_SysUserRole_SysRole]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SysUserRole] DROP CONSTRAINT [FK_SysUserRole_SysRole];
 GO
-IF OBJECT_ID(N'[dbo].[FK_SysRoleSysAction_SysRole]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SysRoleSysAction] DROP CONSTRAINT [FK_SysRoleSysAction_SysRole];
+IF OBJECT_ID(N'[dbo].[FK_SysRoleAction_SysRole]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SysRoleAction] DROP CONSTRAINT [FK_SysRoleAction_SysRole];
 GO
-IF OBJECT_ID(N'[dbo].[FK_SysRoleSysAction_SysAction]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SysRoleSysAction] DROP CONSTRAINT [FK_SysRoleSysAction_SysAction];
+IF OBJECT_ID(N'[dbo].[FK_SysRoleAction_SysAction]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SysRoleAction] DROP CONSTRAINT [FK_SysRoleAction_SysAction];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[SysUserSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SysUserSet];
+IF OBJECT_ID(N'[dbo].[SysUser]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SysUser];
 GO
 IF OBJECT_ID(N'[dbo].[SysUserAction]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SysUserAction];
@@ -52,11 +52,11 @@ GO
 IF OBJECT_ID(N'[dbo].[SysRole]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SysRole];
 GO
-IF OBJECT_ID(N'[dbo].[SysUserSysRole]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SysUserSysRole];
+IF OBJECT_ID(N'[dbo].[SysUserRole]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SysUserRole];
 GO
-IF OBJECT_ID(N'[dbo].[SysRoleSysAction]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SysRoleSysAction];
+IF OBJECT_ID(N'[dbo].[SysRoleAction]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SysRoleAction];
 GO
 
 -- --------------------------------------------------
