@@ -1,0 +1,59 @@
+﻿@model Ouroboros.Model.Dto.SysRoleDto
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/System/Views/Shared/_layuicms.cshtml";
+}
+
+<div class="layui-container">
+    <div class="layui-row">
+        <div class="layui-col-md9">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="RoleName" required lay-verify="required" placeholder="请输入角色名" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否激活</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="IsActlve" lay-skin="switch" lay-text="是|否" value="true">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        layui.use('form', function () {
+            var form = layui.form;
+            form.on('submit(formDemo)', function (data) {
+                var index = top.layer.msg('数据提交中，请稍候', { icon: 16, time: false, shade: 0.8 });
+                $.post("/role/add", data.field, function (result) {
+                    if (result.status == "0") {
+                        setTimeout(function () {
+                            top.layer.close(index);
+                            top.layer.msg(result.msg);
+                            layer.closeAll("iframe");
+                            //刷新父页面
+                            parent.location.reload();
+                        }, 500);
+                    }
+                    else {
+                        top.layer.close(index);
+                        layer.msg(result.msg);
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+}
