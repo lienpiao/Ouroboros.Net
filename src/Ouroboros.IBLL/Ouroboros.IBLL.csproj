@@ -48,6 +48,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ouroboros.Common\Ouroboros.Common.csproj">
+      <Project>{01E5F1A0-7541-426A-B3D2-D65BEEF593DB}</Project>
+      <Name>Ouroboros.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ouroboros.IDAL\Ouroboros.IDAL.csproj">
       <Project>{B5A27B19-902F-413E-847A-3E010AF1B10E}</Project>
       <Name>Ouroboros.IDAL</Name>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,24 +12,16 @@ namespace Ouroboros.Model.EnumList
     /// </summary>
     public enum ActionType
     {
-        /// <summary>
-        /// 菜单
-        /// </summary>
+        [Description("菜单")]
         Menu = 10101,
 
-        /// <summary>
-        /// 功能
-        /// </summary>
+        [Description("功能")]
         Operation = 10102,
 
-        /// <summary>
-        /// 页面元素
-        /// </summary>
+        [Description("页面元素")]
         PageElement = 10103,
 
-        /// <summary>
-        /// 文件
-        /// </summary>
+        [Description("文件")]
         File = 10104
     }
 }

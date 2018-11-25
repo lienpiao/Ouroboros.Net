@@ -23,5 +23,10 @@ namespace Ouroboros.Model.Dto
         public bool IsDeleted { get; set; }
         public virtual ICollection<SysUserAction> SysUserAction { get; set; }
         public virtual ICollection<SysRole> SysRole { get; set; }
+
+        /// <summary>
+        /// Parent树下拉框
+        /// </summary>
+        public string ParentTree { get; set; }
     }
 }

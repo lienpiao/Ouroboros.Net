@@ -1,4 +1,6 @@
-﻿using Ouroboros.Model;
+﻿using Ouroboros.Common;
+using Ouroboros.Model;
+using System.Collections.Generic;
 
 namespace Ouroboros.IBLL
 {
@@ -7,5 +9,6 @@ namespace Ouroboros.IBLL
     /// </summary>
     public interface ISysActionService : IBaseService<SysAction>
     {
+        IList<zTree> GetMenuTree();
     }
 }

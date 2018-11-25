@@ -48,6 +48,10 @@
     <Compile Include="SysUserService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ouroboros.Common\Ouroboros.Common.csproj">
+      <Project>{01E5F1A0-7541-426A-B3D2-D65BEEF593DB}</Project>
+      <Name>Ouroboros.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ouroboros.DAL\Ouroboros.DAL.csproj">
       <Project>{5DABD7AC-DE83-4240-ABC2-24B207BC74DA}</Project>
       <Name>Ouroboros.DAL</Name>

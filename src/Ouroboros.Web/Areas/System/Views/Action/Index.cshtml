@@ -1,7 +1,7 @@
-﻿
+﻿@model Ouroboros.Model.Dto.SysActionDto
 @{
     ViewBag.Title = "模块列表";
-    Layout = "~/Areas/System/Views/Shared/_List.cshtml";
+    Layout = "~/Areas/System/Views/Shared/_layuicms.cshtml";
 }
 <blockquote class="layui-elem-quote quoteBox">
     <form class="layui-form">
@@ -12,17 +12,26 @@
             <a class="layui-btn search_btn" data-type="reload">搜索</a>
         </div>
         <div class="layui-inline">
-            <a class="layui-btn layui-btn-normal addNews_btn">新增</a>
+            <a class="layui-btn layui-btn-normal addAction_btn">新增</a>
         </div>
         <div class="layui-inline">
             <a class="layui-btn layui-btn-danger layui-btn-normal delAll_btn">批量删除</a>
         </div>
     </form>
 </blockquote>
-<table id="newsList" lay-filter="newsList"></table>
+<div class="layui-col-md2" style="border: 1px solid #e2e2e2;">
+        <ul id="treeMenu" class="ztree" style="height:660px"></ul>
+</div>
+<div class="layui-col-md10">
+    <table id="actionList" lay-filter="actionList"></table>
+</div>
 <!--操作-->
-<script type="text/html" id="newsListBar">
+<script type="text/html" id="actionListBar">
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
-    <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="look">预览</a>
 </script>
+@section Scripts{
+    <script src="~/Areas/System/Scripts/actionList.js"></script>
+    <script type="text/javascript">
+    </script>
+}
