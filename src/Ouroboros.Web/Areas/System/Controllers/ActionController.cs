@@ -45,17 +45,17 @@ namespace Ouroboros.Web.Areas.System.Controllers
 
             if (!string.IsNullOrEmpty(sactionId) && string.IsNullOrEmpty(actionName))
             {
-                list = SysActionService.GetList(pageSize, pageIndex, out rowCount, x => x.ParentId == actionId || x.Id == actionId, x => x.Id, false)
+                list = SysActionService.GetList(pageSize, pageIndex, out rowCount, x => x.ParentId == actionId || x.Id == actionId, x => x.Id, false).Where(x => x.IsDeleted == false)
                 .Select(x => new { x.Id, x.ActionName, x.ActionCode, ActionType = x.ActionType.ToString(), x.ParentId, x.Url, x.Icon, x.Sort, x.Area, x.Controller, x.Action, x.HttpMethd }).ToList();
             }
             else if (!string.IsNullOrEmpty(actionName) && string.IsNullOrEmpty(sactionId))
             {
-                list = SysActionService.GetList(pageSize, pageIndex, out rowCount, x => x.ActionName.Contains(actionName), x => x.Id, false)
+                list = SysActionService.GetList(pageSize, pageIndex, out rowCount, x => x.ActionName.Contains(actionName), x => x.Id, false).Where(x => x.IsDeleted == false)
                     .Select(x => new { x.Id, x.ActionName, x.ActionCode, ActionType = x.ActionType.ToString(), x.ParentId, x.Url, x.Icon, x.Sort, x.Area, x.Controller, x.Action, x.HttpMethd }).ToList();
             }
             else if (!string.IsNullOrEmpty(actionName) && !string.IsNullOrEmpty(sactionId))
             {
-                list = SysActionService.GetList(pageSize, pageIndex, out rowCount, x => x.ActionName.Contains(actionName), x => x.Id, false).Where(x => x.ParentId == actionId || x.Id == actionId)
+                list = SysActionService.GetList(pageSize, pageIndex, out rowCount, x => x.ActionName.Contains(actionName) && x.IsDeleted == false, x => x.Id, false).Where(x => x.ParentId == actionId || x.Id == actionId)
                 .Select(x => new { x.Id, x.ActionName, x.ActionCode, ActionType = x.ActionType.ToString(), x.ParentId, x.Url, x.Icon, x.Sort, x.Area, x.Controller, x.Action, x.HttpMethd }).ToList();
             }
             else

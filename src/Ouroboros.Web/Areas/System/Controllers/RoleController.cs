@@ -44,7 +44,7 @@ namespace Ouroboros.Web.Areas.System.Controllers
             }
             else
             {
-                list = SysRoleService.GetList(pageSize, pageIndex, out rowCount, x => x.RoleName.Contains(roleName), x => x.Id, false).Select(x => new { x.Id, x.RoleName, x.IsActlve }).ToList();
+                list = SysRoleService.GetList(pageSize, pageIndex, out rowCount, x => x.RoleName.Contains(roleName) && x.IsDeleted == false, x => x.Id, false).Select(x => new { x.Id, x.RoleName, x.IsActlve }).ToList();
             }
 
             return Json(new { code = "0", msg = "", count = rowCount, data = list }, JsonRequestBehavior.AllowGet);

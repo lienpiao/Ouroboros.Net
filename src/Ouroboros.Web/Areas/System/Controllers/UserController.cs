@@ -45,7 +45,7 @@ namespace Ouroboros.Web.Areas.System.Controllers
             }
             else
             {
-                list = SysUserService.GetList(pageSize, pageIndex, out rowCount, x => x.UserName.Contains(userName), x => x.Id, false).Select(x => new { x.Id, x.UserName, x.ShowName }).ToList();
+                list = SysUserService.GetList(pageSize, pageIndex, out rowCount, x => x.UserName.Contains(userName) && x.IsDeleted == false, x => x.Id, false).Select(x => new { x.Id, x.UserName, x.ShowName }).ToList();
             }
 
             return Json(new { code = "0", msg = "", count = rowCount, data = list }, JsonRequestBehavior.AllowGet);
