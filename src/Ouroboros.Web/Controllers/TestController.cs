@@ -8,6 +8,9 @@ using System.Web.Mvc;
 
 namespace Ouroboros.Web.Controllers
 {
+    /// <summary>
+    /// 测试
+    /// </summary>
     public class TestController : BaseController
     {
 
