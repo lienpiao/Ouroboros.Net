@@ -1,39 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30711.63
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ouroboros.Web.Mvc", "src\Ouroboros.Web.Mvc\Ouroboros.Web.Mvc.csproj", "{7A54907F-7461-48CE-973D-014199C90047}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ouroboros.Infrastructure", "src\Ouroboros.Infrastructure\Ouroboros.Infrastructure.csproj", "{7AEE82C5-72A8-4B6E-A15E-FEB372D59632}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ouroboros.Application", "src\Ouroboros.Application\Ouroboros.Application.csproj", "{C570D346-6B8E-490B-8B24-5BC8EA501846}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ouroboros.Domain", "src\Ouroboros.Domain\Ouroboros.Domain.csproj", "{F3EEA2CB-29B3-4F8C-8F7F-85CE85227A7A}"
-EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7A54907F-7461-48CE-973D-014199C90047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A54907F-7461-48CE-973D-014199C90047}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A54907F-7461-48CE-973D-014199C90047}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A54907F-7461-48CE-973D-014199C90047}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7AEE82C5-72A8-4B6E-A15E-FEB372D59632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7AEE82C5-72A8-4B6E-A15E-FEB372D59632}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7AEE82C5-72A8-4B6E-A15E-FEB372D59632}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7AEE82C5-72A8-4B6E-A15E-FEB372D59632}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C570D346-6B8E-490B-8B24-5BC8EA501846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C570D346-6B8E-490B-8B24-5BC8EA501846}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C570D346-6B8E-490B-8B24-5BC8EA501846}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C570D346-6B8E-490B-8B24-5BC8EA501846}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F3EEA2CB-29B3-4F8C-8F7F-85CE85227A7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3EEA2CB-29B3-4F8C-8F7F-85CE85227A7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3EEA2CB-29B3-4F8C-8F7F-85CE85227A7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3EEA2CB-29B3-4F8C-8F7F-85CE85227A7A}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
