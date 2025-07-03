@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Ouroboros.ApplicationCore\Ouroboros.ApplicationCore.csproj" />
+  </ItemGroup>
+  
+</Project>

@@ -1,9 +1,39 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ouroboros.BlazorAdmin", "src\Ouroboros.BlazorAdmin\Ouroboros.BlazorAdmin.csproj", "{379798D3-5B19-41AF-B260-9AB4DAAA4EA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ouroboros.PublicApi", "src\Ouroboros.PublicApi\Ouroboros.PublicApi.csproj", "{9359E118-4353-456B-B94D-7ED0CFA6600C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ouroboros.ApplicationCore", "src\Ouroboros.ApplicationCore\Ouroboros.ApplicationCore.csproj", "{1667569E-5E3B-4BCB-9609-8ECE7CC8525C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ouroboros.Infrastructure", "src\Ouroboros.Infrastructure\Ouroboros.Infrastructure.csproj", "{30F7FD6D-4D46-4901-846A-FED414666CD9}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{379798D3-5B19-41AF-B260-9AB4DAAA4EA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{379798D3-5B19-41AF-B260-9AB4DAAA4EA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{379798D3-5B19-41AF-B260-9AB4DAAA4EA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{379798D3-5B19-41AF-B260-9AB4DAAA4EA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9359E118-4353-456B-B94D-7ED0CFA6600C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9359E118-4353-456B-B94D-7ED0CFA6600C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9359E118-4353-456B-B94D-7ED0CFA6600C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9359E118-4353-456B-B94D-7ED0CFA6600C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1667569E-5E3B-4BCB-9609-8ECE7CC8525C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1667569E-5E3B-4BCB-9609-8ECE7CC8525C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1667569E-5E3B-4BCB-9609-8ECE7CC8525C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1667569E-5E3B-4BCB-9609-8ECE7CC8525C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30F7FD6D-4D46-4901-846A-FED414666CD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30F7FD6D-4D46-4901-846A-FED414666CD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30F7FD6D-4D46-4901-846A-FED414666CD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30F7FD6D-4D46-4901-846A-FED414666CD9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
